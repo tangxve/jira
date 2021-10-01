@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { SearchPanel } from './search-panel'
 import { List } from './list'
-import axios from 'axios'
+import { http } from '../../utils/http'
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({ name: '', personId: '', })
@@ -11,12 +11,9 @@ export const ProjectListScreen = () => {
   useEffect(() => {
     async function fetchData() {
       console.log('param', { ...param })
-      const res = await axios({
-        url: '/projects',
-        method: 'get',
-        data: { ...param }
-      })
+      const res = await http('/projects?a=1', 'get', { ...param })
 
+      console.log('res', res)
       const { data, status } = res
 
       if (status === 200) {
@@ -29,7 +26,7 @@ export const ProjectListScreen = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await axios.get('/users')
+      const res = await http('/users', 'get')
 
       const { data, status } = res
 
