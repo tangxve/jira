@@ -4,16 +4,13 @@ import { List } from './list'
 import { http } from '../../utils/http'
 
 export const ProjectListScreen = () => {
-  const [param, setParam] = useState({ name: '', personId: '', })
+  const [param, setParam] = useState({ name: '', personId: '' })
   const [users, setUsers] = useState([])
   const [list, setList] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      console.log('param', { ...param })
-      const res = await http('/projects?a=1', 'get', { ...param })
-
-      console.log('res', res)
+      const res = await http('/projects', 'get', { ...param })
       const { data, status } = res
 
       if (status === 200) {
@@ -40,9 +37,9 @@ export const ProjectListScreen = () => {
   return <div>
     <SearchPanel
       param={ param } setParam={ setParam }
-      users={ users } setUsers={ setUsers }/>
+      users={ users } setUsers={ setUsers } />
     <List
       users={ users }
-      list={ list } setList={ setList }/>
+      list={ list } setList={ setList } />
   </div>
 }

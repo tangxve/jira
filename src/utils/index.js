@@ -1,19 +1,19 @@
 export const isVoid = (v) => {
-  return v === undefined || v === null || v === "";
-};
+  return v === undefined || v === null || v === ''
+}
 
 export const cleanObject = (obj) => {
-  if (!obj) return {};
+  if (!obj) return {}
 
   // Object.assign({}, object)
-  const result = { ...obj };
+  const result = { ...obj }
 
-  Object.keys(obj).map((key) => {
-    const value = result[key];
+  Object.keys(obj).forEach((key) => {
+    const value = result[key]
     if (isVoid(value)) {
-      delete result[key];
+      delete result[key]
     }
-  });
+  })
 
-  return result;
-};
+  return result
+}
