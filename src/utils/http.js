@@ -8,17 +8,20 @@ axios.defaults.baseURL = apiUrl
 export const http = (u, m = 'get', p) => {
   m = m.toUpperCase()
   const data = cleanObject(p)
-  let url = ''
+
+  console.log('data', data)
+  let url = u
 
   if (m === 'GET') {
-    console.log(222)
     url =
-      u.indexOf('?') === -1
-        ? `${u}?${qs.stringify(data)}`
-        : `${u}&${qs.stringify(data)}`
+      url.indexOf('?') === -1
+        ? `${url}?${qs.stringify(data)}`
+        : `${url}&${qs.stringify(data)}`
   }
+  // let body = Object.create(null)
   return axios({
     url,
     method: m,
+    data,
   })
 }
