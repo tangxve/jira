@@ -33,7 +33,7 @@ export const useMount = (cb: () => void) => {
   }, [])
 }
 
-export const useDebounce = (value: any, delay?: number) => {
+export const useDebounce = <V>(value: V, delay?: number) => {
   // 定义内部变量
   const [debounceValue, setDebounceValue] = useState(value)
 
