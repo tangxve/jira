@@ -5,9 +5,9 @@ import { http } from '../../utils/http'
 import { useMount, useDebounce } from '../../utils'
 
 export const ProjectListScreen = () => {
-  const [param, setParam] = useState({ name: '', personId: '' })
   const [users, setUsers] = useState([])
   const [list, setList] = useState([])
+  const [param, setParam] = useState({ name: '', personId: '' })
 
   const debounceParam = useDebounce(param, 500)
 
